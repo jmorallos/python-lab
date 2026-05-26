@@ -33,3 +33,54 @@ def create_character(character_name, strength, intelligence, charisma):
 
 
 print(create_character("KeneJ", 3, 2, 1))
+
+# solution
+"""
+FULL_DOT = "●"
+EMPTY_DOT = "○"
+MAX_STAT = 4
+TOTAL_POINTS = 7
+
+
+def render_stat(value):
+    return FULL_DOT * value + EMPTY_DOT * (MAX_STAT - value)
+
+
+def create_character(name, strength, intelligence, charisma):
+    stats = (strength, intelligence, charisma)
+
+    if not isinstance(name, str):
+        raise TypeError("Character name must be a string")
+
+    name = name.strip()
+
+    if not name:
+        raise ValueError("Character must have a name")
+
+    if len(name) > 10:
+        raise ValueError("Character name is too long")
+
+    if " " in name:
+        raise ValueError("Character name should not contain spaces")
+
+    if not all(isinstance(stat, int) for stat in stats):
+        raise TypeError("All stats must be integers")
+
+    if any(stat < 1 or stat > MAX_STAT for stat in stats):
+        raise ValueError(f"Stats must be between 1 and {MAX_STAT}")
+
+    if sum(stats) != TOTAL_POINTS:
+        raise ValueError(
+            f"Character must start with {TOTAL_POINTS} points"
+        )
+
+    return (
+        f"{name}\n"
+        f"STR {render_stat(strength)}\n"
+        f"INT {render_stat(intelligence)}\n"
+        f"CHA {render_stat(charisma)}"
+    )
+
+
+print(create_character("KeneJ", 3, 2, 2)) 
+"""
