@@ -38,7 +38,7 @@ def create_character(character_name, strength, intelligence, charisma):
     if any(stat > 4 for stat in (strength, intelligence, charisma)):
         return "All stats should be no more than 4"
 
-    # statsAll == 7
+    # statsAll != 7
     # "The character should start with 7 points"
     total_pts = strength + intelligence + charisma
     if total_pts != 7:
